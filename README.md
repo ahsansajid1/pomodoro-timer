@@ -43,7 +43,7 @@ i deploed this project using netlify.
 
 ## Deployed URL
 
-*Placeholder: https://6a1540daef366f52ccf7d510--heroic-raindrop-77c513.netlify.app/*
+*Placeholder:https://clocktasktimer.netlify.app/*
 
 ## Accessibility Notes
 
