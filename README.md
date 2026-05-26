@@ -39,25 +39,11 @@ pomodoro-timer/
 ## Deployment Instructions
 
 This project is entirely static and requires no build step.
-
-### Deploying on Vercel
-
-1. Create a GitHub repository and push this code.
-2. Log in to [Vercel](https://vercel.com/) and click **Add New Project**.
-3. Import your GitHub repository.
-4. Leave the Framework Preset as `Other` and click **Deploy**.
-
-### Deploying on Netlify
-
-1. Log in to [Netlify](https://netlify.com/) and go to your dashboard.
-2. Click **Add new site** -> **Import an existing project**.
-3. Connect your GitHub account and select the repository.
-4. Leave the build command and publish directory empty.
-5. Click **Deploy site**.
+i deploed this project using netlify.
 
 ## Deployed URL
 
-*Placeholder: [https://your-pomodoro-demo.vercel.app](https://your-pomodoro-demo.vercel.app)*
+*Placeholder: https://6a1540daef366f52ccf7d510--heroic-raindrop-77c513.netlify.app/*
 
 ## Accessibility Notes
 
