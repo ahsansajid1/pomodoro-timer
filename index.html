@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>Pomodoro</h1>
+        </header>
+
+        <main class="timer-card" id="timerCard">
+            <div class="mode-indicator">
+                <span id="modeText" class="mode-text">Focus Mode</span>
+            </div>
+
+            <div class="time-display" aria-label="Time remaining">
+                <span id="minutes">25</span><span class="colon">:</span><span id="seconds">00</span>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn" class="btn primary-btn" aria-label="Start timer">Start</button>
+                <button id="pauseBtn" class="btn secondary-btn hidden" aria-label="Pause timer">Pause</button>
+                <button id="resumeBtn" class="btn secondary-btn hidden" aria-label="Resume timer">Resume</button>
+                <button id="resetBtn" class="btn outline-btn" aria-label="Reset timer">Reset</button>
+            </div>
+
+            <div class="settings">
+                <div class="setting-group">
+                    <label for="focusInput">Focus (min)</label>
+                    <input type="number" id="focusInput" min="1" max="60" value="25" aria-label="Focus duration in minutes">
+                </div>
+                <div class="setting-group">
+                    <label for="breakInput">Break (min)</label>
+                    <input type="number" id="breakInput" min="1" max="30" value="5" aria-label="Break duration in minutes">
+                </div>
+            </div>
+        </main>
+
+        <section class="history-section">
+            <h2>Today's History</h2>
+            <ul id="historyList" class="history-list" aria-label="Completed focus sessions">
+                <!-- History items injected here -->
+            </ul>
+        </section>
+    </div>
+
+    <!-- Audio element for ding sound -->
+    <audio id="dingSound" preload="auto">
+        <source src="ding.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
