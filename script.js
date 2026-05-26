@@ -149,38 +149,32 @@ function updateUI() {
 }
 
 // --- Audio ---
-const dingSound = new Audio("ding.mp3");
-let audioCtx = null;
-
 function playDing() {
-    // Try MP3 first
-    dingSound.currentTime = 0;
+    // Check if ding.mp3 exists, otherwise provide a fallback tone using Web Audio API
     dingSound.play().catch(() => {
-        // Fallback beep
+        // Fallback tone if file is missing or blocked by autoplay policies
         try {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
             osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            osc.type = "sine";
-            osc.frequency.value = 800;
-
-            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.3);
+            gain.connect(ctx.destination);
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.5);
+            
+            gain.gain.setValueAtTime(1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1);
+            
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 1);
         } catch (e) {
-            console.error("Audio failed:", e);
+            console.error('Audio playback failed', e);
         }
     });
 }
+
 // --- History & LocalStorage ---
 function getTodayString() {
     const today = new Date();
